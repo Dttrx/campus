@@ -43,5 +43,5 @@ public class User {
             nullable = false,
             columnDefinition = "boolean default false"
     )
-    private boolean isTeacher;
+    private boolean teacher;
 }

@@ -17,11 +17,6 @@ public class UserController {
         return repository.findAll();
     }
 
-    @GetMapping("/exist/user/email/{email}")
-    public boolean existsEmail(@PathVariable String email) {
-        return repository.existsByEmail(email);
-    }
-
     @PostMapping("/add/user")
     public void addUser(@RequestBody User user) {
         repository.save(user);
