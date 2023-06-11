@@ -5,11 +5,10 @@ import com.imf.campus.model.entity.Teacher;
 import com.imf.campus.model.entity.User;
 import com.imf.campus.model.repository.StudentRepository;
 import com.imf.campus.model.repository.TeacherRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CampusPersonTest {
@@ -41,5 +40,14 @@ class CampusPersonTest {
 
         sRepo.save(s);
         tRepo.save(t);
+
+        Assertions.assertEquals(s, sRepo.findById(s.getId()).orElse(Student.builder().build()));
+        Assertions.assertEquals(t, tRepo.findById(t.getId()).orElse(Teacher.builder().build()));
+    }
+
+    @Test
+    public void findAllCampusPerson() {
+        System.out.println(sRepo.findAll());
+        System.out.println(tRepo.findAll());
     }
 }

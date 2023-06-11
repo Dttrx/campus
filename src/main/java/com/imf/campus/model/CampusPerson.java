@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 // spring data
 @MappedSuperclass
 @Table(indexes = @Index(
-        name = "unique_name",
+        name = "unique_full_name",
         unique = true,
-        columnList = "name"
+        columnList = "full_name"
 ))
 public class CampusPerson {
     @Column(nullable = false)
@@ -24,9 +24,6 @@ public class CampusPerson {
             cascade = CascadeType.ALL,
             optional = false
     )
-    @JoinColumn(
-            name = "user_id",
-            referencedColumnName = "user_id"
-    )
+    @JoinColumn(name = "user_id")
     private User user;
 }

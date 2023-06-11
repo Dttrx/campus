@@ -2,15 +2,13 @@ package com.imf.campus.model.entity;
 
 import com.imf.campus.model.CampusPerson;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 // lombok
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 // spring data
 @Entity
 public class Teacher extends CampusPerson {
@@ -19,6 +17,7 @@ public class Teacher extends CampusPerson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @SuppressWarnings("unused")
     @Builder
     public Teacher(String name, User user, long id) {
         super(name, user);
