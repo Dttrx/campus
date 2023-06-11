@@ -1,8 +1,11 @@
 package com.imf.campus.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.imf.campus.model.CampusPerson;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 // lombok
 @Data
@@ -16,6 +19,12 @@ public class Teacher extends CampusPerson {
     @Column(name = "teacher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @OneToMany(
+            mappedBy = "teacher",
+            fetch = FetchType.LAZY
+    )
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "teacher"})
+    private List<Subject> subjects;
 
     @SuppressWarnings("unused")
     @Builder

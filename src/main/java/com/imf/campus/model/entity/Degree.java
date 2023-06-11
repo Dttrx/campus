@@ -39,4 +39,7 @@ public class Degree {
     )
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "degree"})
     private List<Classroom> classrooms;
+    @ManyToMany(mappedBy = "degrees")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "degrees"})
+    private List<Subject> subjects;
 }

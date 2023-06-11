@@ -28,11 +28,11 @@ public class Classroom {
     private long id;
     @Column(nullable = false)
     private char letter;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "degree_id",
-            referencedColumnName = "degree_id"
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.REMOVE
     )
+    @JoinColumn(name = "degree_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "classrooms"})
     private Degree degree;
 }

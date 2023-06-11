@@ -25,7 +25,7 @@ public class Student extends CampusPerson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn()
+    @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     @SuppressWarnings("unused")
